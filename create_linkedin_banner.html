@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create LinkedIn Banner</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #4a6fa5;
+            font-family: 'Playfair Display', serif;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            max-width: 100%;
+        }
+        .download-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .download-btn:hover {
+            background-color: #7e57c2;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>LinkedIn Banner for Vignesh Shivkumar</h1>
+    <canvas id="banner" width="1584" height="396"></canvas>
+    <a id="download-link" class="download-btn" download="linkedin_banner.jpg">Download Banner (JPEG)</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('banner');
+            const ctx = canvas.getContext('2d');
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, 1584, 396);
+            gradient.addColorStop(0, '#202124');
+            gradient.addColorStop(1, '#4a6fa5');
+            
+            // Fill background
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1584, 396);
+            
+            // Add abstract elements
+            // Circles
+            ctx.fillStyle = 'rgba(107, 141, 185, 0.2)';  // #6b8db9 with opacity
+            ctx.beginPath();
+            ctx.arc(150, 198, 80, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = 'rgba(126, 87, 194, 0.2)';  // #7e57c2 with opacity
+            ctx.beginPath();
+            ctx.arc(1434, 198, 80, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Lines
+            ctx.strokeStyle = 'rgba(74, 111, 165, 0.1)';  // #4a6fa5 with opacity
+            ctx.lineWidth = 2;
+            
+            ctx.beginPath();
+            ctx.moveTo(0, 150);
+            ctx.lineTo(1584, 150);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(0, 250);
+            ctx.lineTo(1584, 250);
+            ctx.stroke();
+            
+            // Main content area
+            ctx.fillStyle = 'rgba(248, 249, 250, 0.9)';  // #f8f9fa with opacity
+            roundedRect(ctx, 400, 88, 784, 220, 10);
+            
+            // Left accent decoration
+            ctx.fillStyle = '#7e57c2';
+            ctx.fillRect(350, 88, 10, 220);
+            
+            // Right accent decoration
+            ctx.fillRect(1224, 88, 10, 220);
+            
+            // Text - Name
+            ctx.fillStyle = '#4a6fa5';
+            ctx.font = 'bold 48px "Playfair Display", serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Vignesh Shivkumar', 792, 158);
+            
+            // Text - Title
+            ctx.fillStyle = '#6b8db9';
+            ctx.font = '28px "Roboto", sans-serif';
+            ctx.fillText('Product Manager', 792, 208);
+            
+            // Skills highlight background
+            ctx.fillStyle = '#4a6fa5';
+            roundedRect(ctx, 502, 238, 580, 40, 20);
+            
+            // Skills text
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '18px "Roboto", sans-serif';
+            ctx.fillText('Banking • FinTech • RPA • Health & Wellness • EdTech', 792, 265);
+            
+            // Set up download link
+            const downloadLink = document.getElementById('download-link');
+            downloadLink.href = canvas.toDataURL('image/jpeg', 0.9);
+        });
+        
+        // Helper function for drawing rounded rectangles
+        function roundedRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.arcTo(x + width, y, x + width, y + radius, radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.arcTo(x + width, y + height, x + width - radius, y + height, radius);
+            ctx.lineTo(x + radius, y + height);
+            ctx.arcTo(x, y + height, x, y + height - radius, radius);
+            ctx.lineTo(x, y + radius);
+            ctx.arcTo(x, y, x + radius, y, radius);
+            ctx.closePath();
+            ctx.fill();
+        }
+    </script>
+</body>
+</html>

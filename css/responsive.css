@@ -1,0 +1,185 @@
+/* Media Queries for Responsive Design */
+
+/* Tablets and Small Laptops */
+@media screen and (max-width: 992px) {
+    /* Typography Adjustments */
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    /* Layout Adjustments */
+    .skills-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Hero Section Adjustments */
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content {
+        order: 2;
+    }
+    
+    .hero-image {
+        order: 1;
+        margin-bottom: var(--spacing-md);
+        justify-content: center;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    /* About Section */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .about-details {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .detail-item {
+        flex: 1;
+        min-width: calc(50% - var(--spacing-md));
+    }
+    
+    /* Contact Section */
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+/* Mobile Devices */
+@media screen and (max-width: 768px) {
+    /* Typography Adjustments */
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    /* Layout Adjustments */
+    .skills-content,
+    .portfolio-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Navigation */
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--light-bg);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right var(--transition-medium);
+        z-index: 1000;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        padding: var(--spacing-xl) var(--spacing-md);
+        gap: var(--spacing-md);
+    }
+    
+    .nav-toggle:checked ~ nav {
+        right: 0;
+    }
+    
+    .nav-toggle-label {
+        display: block;
+        z-index: 1001;
+    }
+    
+    .nav-toggle:checked ~ .nav-toggle-label .menu-icon {
+        display: none;
+    }
+    
+    .nav-toggle:checked ~ .nav-toggle-label .close-icon {
+        display: block;
+    }
+    
+    /* About Section */
+    .detail-item {
+        min-width: 100%;
+    }
+    
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    .footer-nav ul {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 480px) {
+    /* Typography Adjustments */
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.3rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    /* Layout Adjustments */
+    .cta-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    /* Portfolio Filters */
+    .portfolio-filters {
+        flex-wrap: wrap;
+    }
+    
+    /* Navigation */
+    nav {
+        width: 85%;
+    }
+}
